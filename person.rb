@@ -1,6 +1,7 @@
 require './nameable'
+require './rental'
 class Person < Nameable
-  attr_reader :id
+  attr_reader :id :rentals #this is supposed to be array that houses the rentals made by persons
   attr_accessor :name, :age
 
   def initialize(age, name = 'Unknown', parent_permission: true)
