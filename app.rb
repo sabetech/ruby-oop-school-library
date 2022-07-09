@@ -8,6 +8,7 @@ class App
     @persons = []
     @rentals = []
   end
+
   def run
     loop do
       puts 'Please choose an option by entering a number:'
@@ -23,6 +24,7 @@ class App
     end
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def process_input(option)
     case option
     when 1
@@ -44,6 +46,7 @@ class App
       puts 'please select another option'
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def list_books()
     puts "\nList of Books: "
@@ -105,14 +108,14 @@ class App
     puts 'List of Rentals: '
 
     if @rentals.length.zero?
-        puts 'There is no rental in the list. Please add a rental!'
-      else
-        @rentals.each do |rental|
-          puts "Date: #{rental.date}. Book: '#{rental.book.title}' by #{rental.book.author}" if rental.person.id == id - 1
-        end
+      puts 'There is no rental in the list. Please add a rental!'
+    else
+      @rentals.each do |rental|
+        puts "Date: #{rental.date}. Book: '#{rental.book.title}' by #{rental.book.author}" if rental.person.id == id - 1
       end
-      puts "\n"
     end
+    puts "\n"
+  end
 
   def create_somebody()
     print 'Do you want to create Student (1) or Teacher (2)? [Input the number]: '
@@ -124,31 +127,33 @@ class App
     create_person(age, name, person_type)
   end
 
+  # rubocop:disable Metrics/MethodLength
   def create_person(age, name, person_type)
     case person_type
-      when 1 # student
-        print 'Parent Permission [y/n]: '
-        parent_permission = gets.chomp
-        case parent_permission
-            when 'y'
-                student = Student.new(age, name)
-                puts 'The Student is created successfuly'
-            when 'n'
-                student = Student.new(age, name, parent_permission: false)
-                puts 'The Student is created successfuly'
-            else
-                puts "Invalid input! Type 'y' or 'n'"
-            end
-          @persons << student
+    when 1 # student
+      print 'Parent Permission [y/n]: '
+      parent_permission = gets.chomp
+      case parent_permission
+      when 'y'
+        student = Student.new(age, name)
+        puts 'The Student is created successfuly'
+      when 'n'
+        student = Student.new(age, name, parent_permission: false)
+        puts 'The Student is created successfuly'
+      else
+        puts "Invalid input! Type 'y' or 'n'"
+      end
+      @persons << student
 
-        when 2 # teacher
-        print 'Specialization: '
-        specialization = gets.chomp
-        teacher = Teacher.new(age, specialization, name: name)
-        @persons << teacher
-        puts 'The Teacher is created successfuly'
-        else
-        puts 'Invalid input! Type a valid input (1 or 2)'
+    when 2 # teacher
+      print 'Specialization: '
+      specialization = gets.chomp
+      teacher = Teacher.new(age, specialization, name: name)
+      @persons << teacher
+      puts 'The Teacher is created successfuly'
+    else
+      puts 'Invalid input! Type a valid input (1 or 2)'
     end
   end
+  # rubocop:enable Metrics/MethodLength
 end
