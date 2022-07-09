@@ -83,10 +83,36 @@ class App
   end
 
   def create_rental
-    
+    print "\nSelect a book from the following list by number: "
+    list_books
+    book_index = gets.chomp.to_i
+
+    print "\nSelect a person from the following list by number (not id): "
+    list_people
+    person_index = gets.chomp.to_i
+    print 'Enter a date [format yyyy/mm/dd]: '
+    date = gets.chomp
+
+    rental = Rental.new(date, @persons[person_index - 1], @books[book_index - 1])
+    @rentals << rental
+    puts "Rental created successfully\n\n"
   end
 
-  def list_rentals(person_id); end
+  def list_rentals()
+    puts "\nID of the Person: "
+    list_people
+    id = gets.chomp.to_i
+    puts 'List of Rentals: '
+
+    if @rentals.length.zero?
+        puts 'There is no rental in the list. Please add a rental!'
+      else
+        @rentals.each do |rental|
+          puts "Date: #{rental.date}. Book: '#{rental.book.title}' by #{rental.book.author}" if rental.person.id == id - 1
+        end
+      end
+      puts "\n"
+    end
 
   def create_somebody()
     print 'Do you want to create Student (1) or Teacher (2)? [Input the number]: '
