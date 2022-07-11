@@ -7,6 +7,4 @@ class Rental
     @person = person
     @book = book
   end
-
-  
 end

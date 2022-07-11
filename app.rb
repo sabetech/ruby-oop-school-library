@@ -34,17 +34,17 @@ class App
   def process_input(option)
     case option
     when 1
-        ListBooks.new(@books).display_book_list
+      ListBooks.new(@books).display_book_list
     when 2
-        ListPersons.new(@persons).list_persons
+      ListPersons.new(@persons).list_persons
     when 3
-        @persons << CreatePerson.new().return_created_person
+      @persons << CreatePerson.new.return_created_person
     when 4
-        @books << CreateBook.new().return_created_book
+      @books << CreateBook.new.return_created_book
     when 5
-        @rentals << CreateRental.new(@books, @persons).return_created_rental()
+      @rentals << CreateRental.new(@books, @persons).return_created_rental
     when 6
-        ListRentals.new(@rentals).list_rentals(@persons)
+      ListRentals.new(@rentals).list_rentals(@persons)
     when 7
       puts 'Thank you for using School Library App'
       exit
@@ -53,5 +53,4 @@ class App
     end
   end
   # rubocop:enable Metrics/CyclomaticComplexity
-  
 end
