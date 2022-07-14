@@ -5,11 +5,17 @@ class Book
   def initialize(title, author)
     @title = title
     @author = author
-    # rentals = []
   end
 
   def add_rentals=(rental)
     rental.book = self
     rentals.push(rental)
+  end
+
+  def to_json(*_args)
+    {
+      'title' => title,
+      'author' => author
+    }
   end
 end
