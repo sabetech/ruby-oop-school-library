@@ -26,6 +26,11 @@ class Person < Nameable
     rentals.push(rental)
   end
 
+  def modify_id(id)
+    @id = id
+    self
+  end
+
   private
 
   def of_age?

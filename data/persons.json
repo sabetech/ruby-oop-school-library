@@ -1,0 +1,1 @@
+[{"type":"Student","data":"{\"id\":950,\"age\":\"23\",\"name\":\"Ghanainaoif\",\"parent_permission\":true,\"classroom\":null}"},{"type":"Teacher","data":"{\"id\":963,\"age\":\"19\",\"name\":\"Huy nuia\",\"specialization\":\"English\"}"},{"type":"Student","data":"{\"id\":459,\"age\":\"12\",\"name\":\"Rynai\",\"parent_permission\":false,\"classroom\":null}"}]

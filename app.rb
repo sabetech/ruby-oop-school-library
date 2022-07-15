@@ -8,11 +8,13 @@ require './list_rentals'
 require './create_person'
 require './create_book'
 require './create_rental'
+require './file_persistence'
+
 class App
   def initialize
-    @books = []
-    @persons = []
-    @rentals = []
+    @books = DataPersistence.load_books
+    @persons = DataPersistence.load_persons
+    @rentals = DataPersistence.load_rentals
   end
 
   def run
@@ -47,6 +49,7 @@ class App
       ListRentals.new(@rentals).list_rentals(@persons)
     when 7
       puts 'Thank you for using School Library App'
+      DataPersistence.save_all(@books, @persons, @rentals)
       exit
     else
       puts 'please select another option'
