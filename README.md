@@ -47,6 +47,10 @@ and test the classes and methods
 
 ## 🤝 Contributing
 
+### Contributor 
+- GitHub: [@sabetech](https://github.com/BasitKorede)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/basit-korede/)
+
 Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](../../issues/).
