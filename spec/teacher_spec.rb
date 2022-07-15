@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'Teacher' do
   before(:each) do
-    @teacher = Teacher.new(32, 'Math', name:'Steve')
+    @teacher = Teacher.new(32, 'Math', name: 'Steve')
   end
 
   it 'Should take the age, the specialization, and the name' do
@@ -19,7 +19,7 @@ describe 'Teacher' do
   end
 
   it 'Should return true if the age is greater than or equal to 18' do
-    new_teacher = Teacher.new(45, 'Programming', name:'John Doe')
+    new_teacher = Teacher.new(45, 'Programming', name: 'John Doe')
     expect(new_teacher.can_use_services?).to eq(true)
   end
 end
